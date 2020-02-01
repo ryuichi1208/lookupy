@@ -35,3 +35,8 @@ jobs:
       run: |
         pytest --version
         pytest -vv || echo $$
+        pytest -v --cov=. --cov-report=html || echo $$
+    - uses: actions/upload-artifact@v1
+      with:
+        name: pytest-results
+        path: htmlcov
