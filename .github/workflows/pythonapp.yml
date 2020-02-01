@@ -22,7 +22,7 @@ jobs:
 
     - name: Show build env info
       run: |
-        bash ./script/print_info.sh
+        bash ./scripts/print_info.sh
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
