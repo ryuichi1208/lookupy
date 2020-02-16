@@ -58,4 +58,4 @@ jobs:
     - name: Install triby
       run: |
         ./scripts/install_triby.sh
-        triby --version
+        triy --version
