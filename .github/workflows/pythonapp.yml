@@ -74,6 +74,8 @@ jobs:
       name: Download docker image
       with:
         name: docker-image
-    - name: Check docker image
+    - name: Docker image load
       run: |
-        pwd && ls -l
+        pwd && ls -l docker-image
+        docker image load < docker-image/lookupy.tar
+        docker image ls --all
