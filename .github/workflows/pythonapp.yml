@@ -26,7 +26,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -39,4 +38,14 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: pytest-results
-        path: htmlcov
+        path: htmlco
+        
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Image build
+      run: |
+        docker image build -t lookupy .
+        docker image ls --all
+      
