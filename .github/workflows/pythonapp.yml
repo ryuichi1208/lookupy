@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Show build env info
+        shell: bash
         run: |
           bash ./scripts/print_info.sh
   ci:
