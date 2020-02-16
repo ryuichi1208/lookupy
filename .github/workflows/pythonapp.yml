@@ -38,7 +38,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: pytest-results
-        path: htmlco
+        path: htmlcov
         
   docker:
     runs-on: ubuntu-latest
@@ -46,6 +46,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Image build
       run: |
-        docker image build -t lookupy .
+        DOCKER_BUILDKIT=1 docker image build -t lookupy .
         docker image ls --all
-      
