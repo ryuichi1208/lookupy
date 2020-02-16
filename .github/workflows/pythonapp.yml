@@ -36,6 +36,7 @@ jobs:
         pytest -vv || echo $$
         pytest -v --cov=. --cov-report=html || echo $$
     - uses: actions/upload-artifact@v1
+      name: Upload pytest results
       with:
         name: pytest-results
         path: htmlcov
@@ -50,6 +51,14 @@ jobs:
     - name: Image list show
       run: |
         docker image ls --all
+    - name: Image save
+      run: |
+        docker image save lookupy:${GITHUB_RUN_ID} > lookupy:${GITHUB_RUN_ID}.tar
+    - uses: actions/upload-artifact@v1
+      name: Upload docker image
+      with:
+        name: docker-image
+        path: lookupy:${GITHUB_RUN_ID}.tar
 
   exec_triby:
     runs-on: ubuntu-latest
