@@ -53,12 +53,12 @@ jobs:
         docker image ls --all
     - name: Image save
       run: |
-        docker image save lookupy:${GITHUB_RUN_ID} > lookupy:${GITHUB_RUN_ID}.tar
+        docker image save lookupy:${GITHUB_RUN_ID} > lookupy.tar
     - uses: actions/upload-artifact@v1
       name: Upload docker image
       with:
         name: docker-image
-        path: lookupy:${GITHUB_RUN_ID}.tar
+        path: lookupy.tar
 
   exec_triby:
     runs-on: ubuntu-latest
