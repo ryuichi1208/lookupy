@@ -72,8 +72,8 @@ jobs:
         trivy --version
     - uses: actions/download-artifact@v1
       name: Download docker image
-        with:
-          name: docker-image
+      with:
+        name: docker-image
     - name: Check docker image
       run: |
         pwd && ls -l
