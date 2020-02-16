@@ -40,7 +40,7 @@ jobs:
         name: pytest-results
         path: htmlcov
 
-  docker:
+  docker_image_build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -58,3 +58,4 @@ jobs:
     - name: Install triby
       run: |
         ./scripts/install_triby.sh
+        triby --version
