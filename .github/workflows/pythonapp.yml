@@ -8,7 +8,8 @@ on:
     branches:
       - master
   schedule:
-    - cron:  '15 6 * * *'
+    - cron: '15 6 * * *'
+    - cron: '15 18 * * *'
 
 jobs:
   pre_build:
@@ -62,9 +63,17 @@ jobs:
 
   exec_triby:
     runs-on: ubuntu-latest
+    needs: docker_image_build
     steps:
     - uses: actions/checkout@v2
     - name: Install triby
       run: |
         ./scripts/install_triby.sh
         trivy --version
+    - uses: actions/download-artifact@v1
+      name: Download docker image
+        with:
+          name: docker-image
+    - name: Check docker image
+      run: |
+        pwd && ls -l
